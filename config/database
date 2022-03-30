@@ -1,0 +1,83 @@
+
+CREATE TABLE PatientsData (
+    first varchar(20) NOT NULL, 
+    last varchar(20),
+    sex varchar(1) NOT NULL,
+    blood varchar(2) NOT NULL, 
+    password varchar(20) NOT NULL,
+    userId int(3) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    aadhar int(3) NOT NULL UNIQUE,
+    allergy varchar(100), 
+    phone int(10),
+    address varchar(100), 
+    ill varchar(100)
+);
+
+CREATE TABLE DoctorsData (
+    first varchar(20) NOT NULL, 
+    last varchar(20),
+    blood varchar(2),
+    userId int(3) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    password varchar(20) NOT NULL,
+    address varchar(100), 
+    phone int(10),
+    aadhar int(3) NOT NULL UNIQUE,
+    dept varchar(20) NOT NULL,
+    post varchar(20) NOT NULL,
+    postgrad varchar(2) NOT NULL,
+    patients int(3)
+);
+
+CREATE TABLE logs (
+    doctorId int(3), INDEX(doctorId), 
+    patietId int(3) PRIMARY KEY NOT NULL
+);
+
+-- After run the query in Mysql --
+    -- Output of query ---
+
+mysql> desc doctorsdata;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| first    | varchar(20)  | NO   |     | NULL    |                |
+| last     | varchar(20)  | YES  |     | NULL    |                |
+| blood    | varchar(2)   | YES  |     | NULL    |                |
+| userId   | int          | NO   | PRI | NULL    | auto_increment |
+| password | varchar(20)  | NO   |     | NULL    |                |
+| address  | varchar(100) | YES  |     | NULL    |                |
+| phone    | int          | YES  |     | NULL    |                |
+| aadhar   | int          | NO   | UNI | NULL    |                |
+| dept     | varchar(20)  | NO   |     | NULL    |                |
+| post     | varchar(20)  | NO   |     | NULL    |                |
+| postgrad | varchar(2)   | NO   |     | NULL    |                |
+| patients | int          | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+12 rows in set (0.07 sec)
+
+mysql> desc patientsdata;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| first    | varchar(20)  | NO   |     | NULL    |                |
+| last     | varchar(20)  | YES  |     | NULL    |                |
+| sex      | varchar(1)   | NO   |     | NULL    |                |
+| blood    | varchar(2)   | NO   |     | NULL    |                |
+| password | varchar(20)  | NO   |     | NULL    |                |
+| userId   | int          | NO   | PRI | NULL    | auto_increment |
+| aadhar   | int          | NO   | UNI | NULL    |                |
+| allergy  | varchar(100) | YES  |     | NULL    |                |
+| phone    | int          | YES  |     | NULL    |                |
+| address  | varchar(100) | YES  |     | NULL    |                |
+| ill      | varchar(100) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+11 rows in set (0.00 sec)
+
+mysql> desc logs;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| doctorId | int  | YES  | MUL | NULL    |       |
+| patietId | int  | NO   | PRI | NULL    |       |
++----------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
